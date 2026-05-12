@@ -1,0 +1,5 @@
+# config
+config.php
+
+# phpunit cache
+/app/Tests/.phpunit.result.cache
