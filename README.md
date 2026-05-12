@@ -77,6 +77,7 @@ php index.php
 ## config/
 
 Globális konfigurációk.
+Alapértelmezetten config.dist.php érhető el, ezért futtatás előtt *config.php*-t kell létrehozni belőle!
 
 ### config.php
 
