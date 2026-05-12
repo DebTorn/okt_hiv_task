@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit
+        bootstrap="../../autoload.php"
+        cacheResult="true"
+        cacheResultFile="./.phpunit.result.cache"
+        colors="true"
+        stopOnFailure="false"
+>
+    <testsuites>
+        <testsuite name="Calculator rule tests">
+            <directory>./Calculators/Rules</directory>
+        </testsuite>
+        <testsuite name="Calculator tests">
+            <directory>./Calculators</directory>
+        </testsuite>
+        <testsuite name="Validator tests">
+            <directory>./Validators</directory>
+        </testsuite>
+        <testsuite name="Other tests">
+            <directory>./Others</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
