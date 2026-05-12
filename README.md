@@ -1,5 +1,4 @@
-### Projekt struktúra
-# Felvételi Pontszámító Projekt Struktúra
+# Felvételi Pontszámító Kalkulátor Struktúra
 
 ```text
 project-root/
