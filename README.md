@@ -154,6 +154,14 @@ Modellek.
 
 ---
 
+# Felhasznált szoftvertervezési minták
+* SOLID
+* Strategy pattern
+* Dependency Injection
+* Factory pattern
+* Model pattern
+* Részben pipeline
+
 # Lehetséges jövőbeli bővítések
 
 * REST API
