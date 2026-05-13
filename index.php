@@ -15,11 +15,21 @@ $applicantFactory = new App\Factories\ApplicantFactory();
 $config = new \App\Providers\Config();
 $config->setConfigArray($configArray);
 
+$schema = \App\Validators\Schemas\ApplicantSchema::get();
+$schemaValidator = new \App\Validators\SchemaValidator();
+$schemaValidator->setSchema($schema);
+
 $results = [];
 $notCalculated = [];
 
 foreach ($inputArray as $index => $input) {
     try {
+        $schemaValidationResult = $schemaValidator->validate($input);
+
+        if($schemaValidationResult === false){
+            throw new RuntimeException('SCHEMA_VALIDATION_FAILED');
+        }
+
         $admissionCalculator = new \App\Calculators\AdmissionPointCalculator(
             $config,
             [
@@ -50,12 +60,18 @@ foreach ($inputArray as $index => $input) {
     } catch (RuntimeException $e) {
         $errorKey = $e->getMessage();
 
-        $notCalculated[] = [
+        $newError = [
             'applicant_index' => $index,
             'error_code' => $errorKey,
             'error_message' => $errorMessages[$errorKey] ?? 'Ismeretlen hiba',
             'applicant' => $input,
         ];
+
+        if($e->getMessage() === 'SCHEMA_VALIDATION_FAILED'){
+            $newError['errors'] = $schemaValidator->getErrors();
+        }
+
+        $notCalculated[] = $newError;
     }
 }
 
